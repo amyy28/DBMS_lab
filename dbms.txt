@@ -1,0 +1,51 @@
+Create table Student(
+USN number(6) not null primary key,
+Name varchar(15), 
+Dept varchar(4),
+City varchar(15),
+DOB date not null,
+Gender char(8));
+
+Create table Studemarks(
+USN number(6),
+Semester number(4),
+CGPA number(3,5 ));
+
+alter table Studemarks
+modify foreign key (USN) references Student(USN);
+
+alter table Student
+add Age number(2) not null;
+
+alter table Student drop column City;
+
+alter table Studemarks modify Semester number(6);
+
+alter table Student rename to Stud;
+
+alter table Stud rename column DOB to dateofbirth;
+
+insert into Stud values(&USN, '&NAME', '&DEPT', '&DATEOFBIRTH', '&GENDER', &AGE);
+commit;
+
+select * from Stud;
+alter table Studemarks modify CGPA number(10,5);
+
+insert into Studemarks values(&USN, &Semester, &CGPA);
+
+SELECT NAME
+FROM Stud
+WHERE NAME LIKE 'R%';
+
+SELECT NAME
+FROM Stud
+WHERE NAME LIKE 'R%t'
+
+SELECT NAME
+FROM Stud
+WHERE NAME LIKE 'Ro%'
+
+SELECT USN
+FROM Studemarks
+WHERE CGPA BETWEEN 7 and 9;
+
