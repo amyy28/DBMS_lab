@@ -1,0 +1,13 @@
+Create table Product(
+product_no varchar(15),
+sell_price number(6),
+date_of_purchase date not null,
+quantity number(10));
+
+insert into Product values('&PRODUCT_NO', &SELL_PRICE, '&DATE_OF_PURCHASE', &QUANTITY);
+
+SELECT AVG(SELL_PRICE)
+FROM Product
+WHERE PRODUCT_NO = 'P001';
+
+
